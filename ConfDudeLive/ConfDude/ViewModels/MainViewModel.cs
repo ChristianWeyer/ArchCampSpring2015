@@ -1,10 +1,10 @@
 ﻿using ConfDude.Infrastructure;
-using ConfDude.Models;
 using ConfDude.Services;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Data;
 using System.Windows.Input;
+using DataContracts;
 
 namespace ConfDude.ViewModels
 {
@@ -16,7 +16,7 @@ namespace ConfDude.ViewModels
         {
             this.State = "Normal";
             _speakerService = new SpeakerService();
-            this.SpeakerList = new ObservableCollection<Speaker>(_speakerService.GetSpeakerList());
+            this.SpeakerList = new ObservableCollection<SpeakerDto>(_speakerService.GetSpeakerList());
             this.SpeakerView = new ListCollectionView(this.SpeakerList);
             this.SpeakerEditView = this.SpeakerView as IEditableCollectionView;
             this.SpeakerViewLive = this.SpeakerView as ICollectionViewLiveShaping;
@@ -29,7 +29,7 @@ namespace ConfDude.ViewModels
 
             this.SpeakerView.CurrentChanged += SpeakerView_CurrentChanged;
             this.SpeakerView.SortDescriptions.Add(new SortDescription("FirstName", ListSortDirection.Ascending));
-            this.SpeakerView.Filter = (item) => ((Speaker)item).FirstName.StartsWith("Christian");
+            this.SpeakerView.Filter = (item) => ((SpeakerDto)item).FirstName.StartsWith("Christian");
             this.SpeakerView.MoveCurrentToLast();
 
             this.EditCommand = new DelegateCommand(this.CanExecuteEditCommand, this.ExecuteEditCommand);
@@ -41,8 +41,8 @@ namespace ConfDude.ViewModels
         {
         }
 
-        private ObservableCollection<Speaker> _speakerList;
-        public ObservableCollection<Speaker> SpeakerList
+        private ObservableCollection<SpeakerDto> _speakerList;
+        public ObservableCollection<SpeakerDto> SpeakerList
         {
             get { return _speakerList; }
             set { _speakerList = value; this.OnPropertyChanged(); }

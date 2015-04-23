@@ -1,9 +1,8 @@
-﻿using ConfDude.Infrastructure;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
-namespace ConfDude.Models
+namespace DataContracts
 {
-    public class Speaker : ModelBase, IEditableObject
+    public class SpeakerDto : ModelBase, IEditableObject
     {
         private string _firstName;
         private string _firstNameOrg;

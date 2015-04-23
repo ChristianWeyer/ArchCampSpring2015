@@ -1,26 +1,27 @@
-﻿using ConfDude.Models;
+﻿using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using DataContracts;
 
 namespace ConfDude.Services
 {
     public class SpeakerService
     {
-        public Speaker GetSpeakerById(int id)
+        private HttpClient httpClient;
+
+        public SpeakerService()
         {
-            return new Speaker { FirstName = "Christian", LastName = "Weyer" };
+            httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("http://localhost:26788/api/");
         }
 
-        public List<Speaker> GetSpeakerList()
+        public List<SpeakerDto> GetSpeakerList()
         {
-            return new List<Speaker>
-            {
-                new Speaker { FirstName = "Roland", LastName = "Speckmeier" },
-                new Speaker { FirstName = "Andreas", LastName = "Straßer" },
-                new Speaker { FirstName = "Martin", LastName = "Jäger" },
-                new Speaker { FirstName = "Christian", LastName = "Gaal" },
-                new Speaker { FirstName = "Christian", LastName = "Weyer" },
-                new Speaker { FirstName = "Jörg", LastName = "Neumann" },
-            };
+            var result = httpClient.GetAsync("speakers/list").Result;
+            var speakers = result.Content.ReadAsAsync<List<SpeakerDto>>().Result;
+
+
+            return speakers;
         }
     }
 }
