@@ -1,0 +1,94 @@
+﻿<Window x:Class="ConfDude.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:ConfDude.ViewModels"
+        xmlns:inf="clr-namespace:ConfDude.Infrastructure"
+        Title="Conference Dude" Height="350" Width="525" WindowStartupLocation="CenterScreen" FontSize="16">
+    <Window.DataContext>
+        <vm:MainViewModel />
+    </Window.DataContext>
+    <Grid x:Name="rootGrid" inf:VisualStateSwitcher.State="{Binding State}">
+    	<VisualStateManager.VisualStateGroups>
+    		<VisualStateGroup x:Name="Common">
+    			<VisualState x:Name="Normal"/>
+    			<VisualState x:Name="Edit">
+    				<Storyboard>
+    					<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="editButton">
+    						<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+    					</ObjectAnimationUsingKeyFrames>
+    					<BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)" Storyboard.TargetName="listbox">
+    						<DiscreteBooleanKeyFrame KeyTime="0" Value="False"/>
+    					</BooleanAnimationUsingKeyFrames>
+    					<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background)" Storyboard.TargetName="textBox">
+    						<DiscreteObjectKeyFrame KeyTime="0">
+    							<DiscreteObjectKeyFrame.Value>
+    								<SolidColorBrush Color="#FF4DE221"/>
+    							</DiscreteObjectKeyFrame.Value>
+    						</DiscreteObjectKeyFrame>
+    					</ObjectAnimationUsingKeyFrames>
+    				</Storyboard>
+    			</VisualState>
+    		</VisualStateGroup>
+    	</VisualStateManager.VisualStateGroups>
+        
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="12"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="12"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="12"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="12"/>
+        </Grid.ColumnDefinitions>
+        <ListBox x:Name="listbox" Grid.Row="1" Grid.Column="1" MinWidth="100"
+                 ItemsSource="{Binding SpeakerView}"
+                 IsSynchronizedWithCurrentItem="True">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Path="FirstName"/>
+                                <Binding Path="LastName"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Grid Grid.Row="1" Grid.Column="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="3" Grid.Column="1" Text="Vorname:" VerticalAlignment="Center"/>
+            <TextBox x:Name="textBox" Grid.Row="3" Grid.Column="3" Text="{Binding SpeakerView.CurrentItem.FirstName, Mode=TwoWay}" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="5" Grid.Column="1" Text="Nachname:" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="5" Grid.Column="3" Text="{Binding SpeakerView.CurrentItem.LastName, Mode=TwoWay}" VerticalAlignment="Center"/>
+        
+            <StackPanel Grid.Row="1" Grid.ColumnSpan="4" Orientation="Horizontal">
+                <Button x:Name="editButton" Content="Edit" Width="80" Command="{Binding EditCommand}" />
+                <Button x:Name="okButton" Content="OK" Width="80" Margin="8,0,0,0" Command="{Binding OkCommand}" />
+                <Button x:Name="cancelButton" Content="Cancel" Width="80" Margin="8,0,0,0" Command="{Binding CancelCommand}" />
+            </StackPanel>
+        </Grid>
+        
+        
+    </Grid>
+</Window>
