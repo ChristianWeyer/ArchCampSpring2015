@@ -13,6 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{350634
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{5CA43705-CD2A-45AA-9807-D25A338160DB}"
 	ProjectSection(SolutionItems) = preProject
+		confdude.sql = confdude.sql
 		netsh.txt = netsh.txt
 	EndProjectSection
 EndProject
