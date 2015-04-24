@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.CodeDom;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Http;
@@ -65,6 +66,13 @@ namespace WebApis
 
                 return new SpeakerDto { Id = speaker.Id, FirstName = speaker.FirstName, LastName = speaker.LastName };
             }
+        }
+
+        [HttpGet]
+        [ActionName("demoerror")]
+        public void Foo()
+        {
+            throw new ConfDataException("Boom!");
         }
     }
 }

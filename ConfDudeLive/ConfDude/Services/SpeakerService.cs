@@ -39,5 +39,11 @@ namespace ConfDude.Services
 
             return speakerResult;
         }
+
+        public void DemoError()
+        {
+            var result = httpClient.GetAsync("speakers/demoerror").Result;
+            result.EnsureSuccessStatusCode();
+        }
     }
 }

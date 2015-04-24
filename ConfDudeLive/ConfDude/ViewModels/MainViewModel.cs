@@ -124,6 +124,10 @@ namespace ConfDude.ViewModels
             this.RefreshCommands();
             this.State = "Normal";
 
+            _speakerService.DemoError();
+
+            var speaker = _speakerService.UpdateSpeaker((SpeakerDto)this.SpeakerView.CurrentItem);
+
         }
 
         private bool CanExecuteCancelCommand(object parameter)
