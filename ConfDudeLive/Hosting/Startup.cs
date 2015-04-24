@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Formatting;
-using System.Web;
+﻿using System.Net.Http.Formatting;
 using System.Web.Http;
 using Owin;
 
-namespace WebHost
+namespace Hosting
 {
     public class Startup
     {
