@@ -1,11 +1,10 @@
-﻿using System.Collections.Concurrent;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using DataContracts;
-using WebApis.Data_Access;
+using WebApis.DataAccess;
 
-namespace WebHost
+namespace WebApis
 {
     public class SpeakersController : ApiController
     {

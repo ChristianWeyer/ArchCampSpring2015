@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebApis.Data_Access
+namespace WebApis.DataAccess
 {
     public class ConferenceDbContext : DbContext
     {

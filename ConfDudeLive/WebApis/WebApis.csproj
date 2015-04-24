@@ -61,8 +61,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data Access\ConferenceDbContext.cs" />
-    <Compile Include="Data Access\Speaker.cs" />
+    <Compile Include="DataAccess\ConferenceDbContext.cs" />
+    <Compile Include="DataAccess\Speaker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpeakersController.cs" />
   </ItemGroup>
