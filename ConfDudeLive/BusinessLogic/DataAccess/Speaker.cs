@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebApis.DataAccess
+namespace BusinessLogic.DataAccess
 {
     public class Speaker
     {

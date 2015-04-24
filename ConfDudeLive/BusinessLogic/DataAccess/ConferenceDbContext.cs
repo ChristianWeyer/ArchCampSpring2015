@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity;
 
-namespace WebApis.DataAccess
+namespace BusinessLogic.DataAccess
 {
     public class ConferenceDbContext : DbContext
     {
