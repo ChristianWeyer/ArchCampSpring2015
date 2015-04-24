@@ -26,7 +26,6 @@ namespace ConfDude.ViewModels
 
             //this.SpeakerEditView.EditItem(this.SpeakerView.CurrentItem);
 
-
             this.SpeakerView.CurrentChanged += SpeakerView_CurrentChanged;
             this.SpeakerView.SortDescriptions.Add(new SortDescription("FirstName", ListSortDirection.Ascending));
             //this.SpeakerView.Filter = (item) => ((SpeakerDto)item).FirstName.StartsWith("Christian");
@@ -124,7 +123,7 @@ namespace ConfDude.ViewModels
             this.RefreshCommands();
             this.State = "Normal";
 
-            _speakerService.DemoError();
+            //_speakerService.DemoError();
 
             var speaker = _speakerService.UpdateSpeaker((SpeakerDto)this.SpeakerView.CurrentItem);
 
