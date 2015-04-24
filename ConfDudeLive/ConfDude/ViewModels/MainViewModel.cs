@@ -1,10 +1,10 @@
 ﻿using ConfDude.Infrastructure;
 using ConfDude.Services;
+using DataContracts;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Data;
 using System.Windows.Input;
-using DataContracts;
 
 namespace ConfDude.ViewModels
 {
@@ -119,14 +119,17 @@ namespace ConfDude.ViewModels
 
         private void ExecuteOkCommand(object parameter)
         {
+            //_speakerService.DemoError();
+
+            var current = (SpeakerDto)this.SpeakerView.CurrentItem;
+            var index = this.SpeakerList.IndexOf(current);
+            var speaker = _speakerService.UpdateSpeaker(current);
+            this.SpeakerList.RemoveAt(index);
+            this.SpeakerList.Insert(index, speaker);
+
             this.SpeakerEditView.CommitEdit();
             this.RefreshCommands();
             this.State = "Normal";
-
-            //_speakerService.DemoError();
-
-            var speaker = _speakerService.UpdateSpeaker((SpeakerDto)this.SpeakerView.CurrentItem);
-
         }
 
         private bool CanExecuteCancelCommand(object parameter)

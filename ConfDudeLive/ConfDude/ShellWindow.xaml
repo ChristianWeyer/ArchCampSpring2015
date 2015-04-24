@@ -1,0 +1,16 @@
+﻿<Window x:Class="ConfDude.ShellWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ShellWindow" Height="300" Width="300" WindowStartupLocation="CenterScreen" FontSize="16">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" MinWidth="100"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox x:Name="moduleListBox"/>
+        <Border x:Name="moduleViewHost" Background="LightGray" Grid.Column="1"/>
+    </Grid>
+</Window>
