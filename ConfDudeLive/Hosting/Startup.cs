@@ -1,6 +1,7 @@
 ﻿using System.Net.Http.Formatting;
 using System.Web.Http;
 using Owin;
+using Swashbuckle.Application;
 
 namespace Hosting
 {
@@ -13,6 +14,10 @@ namespace Hosting
 
             httpConfig.Formatters.Clear();
             httpConfig.Formatters.Add(new JsonMediaTypeFormatter());
+
+            httpConfig
+                .EnableSwagger(c => c.SingleApiVersion("v1", "ConfDude Web API"))
+                .EnableSwaggerUi();
 
             app.UseWebApi(httpConfig);
         }
