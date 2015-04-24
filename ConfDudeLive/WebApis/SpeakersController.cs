@@ -50,15 +50,20 @@ namespace WebApis
 
         [HttpPut]
         [ActionName("list")]
-        // TODO: return updated Speaker(Dto)!
-        public void UpdateSpeaker(SpeakerDto speakerDto)
+        public SpeakerDto UpdateSpeaker(SpeakerDto speakerDto)
         {
             using (var db = new ConferenceDbContext())
             {
-                db.Entry(new Speaker { Id = speakerDto.Id, FirstName = speakerDto.FirstName, LastName = speakerDto.LastName })
-                    .State = EntityState.Modified;
-
+                var speaker = new Speaker
+                {
+                    Id = speakerDto.Id,
+                    FirstName = speakerDto.FirstName,
+                    LastName = speakerDto.LastName
+                };
+                db.Entry(speaker).State = EntityState.Modified;
                 db.SaveChanges();
+
+                return new SpeakerDto { Id = speaker.Id, FirstName = speaker.FirstName, LastName = speaker.LastName };
             }
         }
     }

@@ -29,7 +29,7 @@ namespace ConfDude.ViewModels
 
             this.SpeakerView.CurrentChanged += SpeakerView_CurrentChanged;
             this.SpeakerView.SortDescriptions.Add(new SortDescription("FirstName", ListSortDirection.Ascending));
-            this.SpeakerView.Filter = (item) => ((SpeakerDto)item).FirstName.StartsWith("Christian");
+            //this.SpeakerView.Filter = (item) => ((SpeakerDto)item).FirstName.StartsWith("Christian");
             this.SpeakerView.MoveCurrentToLast();
 
             this.EditCommand = new DelegateCommand(this.CanExecuteEditCommand, this.ExecuteEditCommand);
@@ -123,6 +123,7 @@ namespace ConfDude.ViewModels
             this.SpeakerEditView.CommitEdit();
             this.RefreshCommands();
             this.State = "Normal";
+
         }
 
         private bool CanExecuteCancelCommand(object parameter)

@@ -23,5 +23,21 @@ namespace ConfDude.Services
 
             return speakers;
         }
+
+        public SpeakerDto AddSpeaker(SpeakerDto speaker)
+        {
+            var result = httpClient.PostAsJsonAsync("speakers/list", speaker).Result;
+            var speakerResult = result.Content.ReadAsAsync<SpeakerDto>().Result;
+
+            return speakerResult;
+        }
+
+        public SpeakerDto UpdateSpeaker(SpeakerDto speaker)
+        {
+            var result = httpClient.PutAsJsonAsync("speakers/list", speaker).Result;
+            var speakerResult = result.Content.ReadAsAsync<SpeakerDto>().Result;
+
+            return speakerResult;
+        }
     }
 }
