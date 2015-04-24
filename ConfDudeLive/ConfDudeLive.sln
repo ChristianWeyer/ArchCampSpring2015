@@ -9,6 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebHost", "WebHost\WebHost.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataContracts", "DataContracts\DataContracts.csproj", "{510AC13C-8621-4C6F-A8AD-C4ED137EA520}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{35063402-C8E1-4054-BEEA-8B0F32F675D6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{5CA43705-CD2A-45AA-9807-D25A338160DB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{C69EF712-469C-4CCA-B6BC-230D6B3DC118}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +36,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{87FE3A2D-BD6C-4D5B-BBCE-787B2DCFD59A} = {35063402-C8E1-4054-BEEA-8B0F32F675D6}
+		{F999CDCF-247E-4840-A54E-B94A7AF73AF0} = {5CA43705-CD2A-45AA-9807-D25A338160DB}
+		{510AC13C-8621-4C6F-A8AD-C4ED137EA520} = {C69EF712-469C-4CCA-B6BC-230D6B3DC118}
 	EndGlobalSection
 EndGlobal

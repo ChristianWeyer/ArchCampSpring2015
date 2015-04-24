@@ -4,6 +4,8 @@ namespace DataContracts
 {
     public class SpeakerDto : ModelBase, IEditableObject
     {
+        public int Id { get; set; }
+
         private string _firstName;
         private string _firstNameOrg;
         public string FirstName
